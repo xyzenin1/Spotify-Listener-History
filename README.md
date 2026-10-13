@@ -22,3 +22,8 @@ It accesses the Sql database first, then, using the API keys given, would store 
 <br>Open Spotify Developer, create a new app, then input the keys necessary here.
 <br>Ex. the REDIRECT can be http://127.0.0.1:8888/callback
 <br>Want it to be http://..... 
+
+
+# packages needed
+
+pip install spotipy mysql-connector-python python-dotenv
