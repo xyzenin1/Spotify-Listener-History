@@ -208,9 +208,6 @@ def main():
     
     print(f"Fetched {len(items)} recently played from Spotify")
     
-    new_plays = 0
-    for item in items:
-        new_plays += save_play(mycur, item)
         
     new_items = []
     for item in items:
@@ -219,10 +216,11 @@ def main():
         
     mycon.commit()
     
-    print(f"Saved {new_plays} new plays")
+    print(f"Saved {new_items} new plays")
     
     display_new_plays(new_items)
     display_table()
+    
     mycur.close()
     mycon.close()
     
