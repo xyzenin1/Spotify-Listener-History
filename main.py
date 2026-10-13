@@ -178,7 +178,7 @@ def display_table():
 def display_new_plays(new_items):
     print("\nNEW PLAYS THIS RUN")
     print(f"{'ARTIST(S)':<40} {'TRACK':<40} {'DATE PLAYED'}")
-    print("-" * 100)
+    print("-" * 136)
 
     if not new_items:
         print("No new plays since last run.")
