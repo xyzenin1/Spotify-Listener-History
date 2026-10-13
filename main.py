@@ -173,6 +173,32 @@ def display_table():
         )
 
     print(f"\n{len(rows)} plays")
+    
+    
+def display_new_plays(new_items):
+    print("\nNEW PLAYS THIS RUN")
+    print(f"{'ARTIST(S)':<40} {'TRACK':<40} {'DATE PLAYED'}")
+    print("-" * 100)
+
+    if not new_items:
+        print("No new plays since last run.")
+        return
+
+    for item in new_items:
+        track = item["track"]
+        artist_names = ", ".join(a["name"] for a in track["artists"])
+
+        # Spotify's timestamp is UTC, so convert to your computer's local time
+        played_at = parse_time(item["played_at"])
+        local_time = played_at.replace(tzinfo=timezone.utc).astimezone()
+
+        print(
+            f"{artist_names[:38]:<40} "
+            f"{track['name'][:38]:<40} "
+            f"{local_time:%Y-%m-%d %I:%M %p}"
+        )
+
+    print(f"\n{len(new_items)} new plays")
         
     
     
@@ -186,11 +212,16 @@ def main():
     for item in items:
         new_plays += save_play(mycur, item)
         
+    new_items = []
+    for item in items:
+        if save_play(mycur, item):
+            new_items.append(item)
+        
     mycon.commit()
     
     print(f"Saved {new_plays} new plays")
     
-    
+    display_new_plays(new_items)
     display_table()
     mycur.close()
     mycon.close()
