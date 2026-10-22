@@ -155,6 +155,7 @@ def display_table():
         JOIN artists a ON ta.artist_id = a.artist_id
         GROUP BY p.play_id, t.name, p.played_at
         ORDER BY p.played_at DESC
+        LIMIT 50
     """)
 
     rows = mycur.fetchall()

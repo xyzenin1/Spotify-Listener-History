@@ -6,6 +6,8 @@ A python program that uses MySql to save and store data of a user using their AP
 
 It accesses the Sql database first, then, using the API keys given, would store the data into specific tables, then display the last 50 songs played. The tables created are called "tracks", "artists", "tracks_artists", and "plays". The main things to look at are the track ID's and artist ID's, which are unique to each song and artist.
 
+<br> In terminal, type in streamlit run app.py to open application
+
 # .env file
 
 <br>SPOTIPY_CLIENT_ID=
@@ -27,3 +29,4 @@ It accesses the Sql database first, then, using the API keys given, would store 
 # packages needed
 
 pip install spotipy mysql-connector-python python-dotenv
+<br>pip install streamlit pandas 
